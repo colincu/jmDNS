@@ -28,10 +28,11 @@ public class ExampleServiceDiscovery {
     public static void main(String[] args) throws InterruptedException {
         try {
             // Create a JmDNS instance
-            JmDNS jmdns = JmDNS.create(InetAddress.getLocalHost());
+            JmDNS jmdnsDis = JmDNS.create(InetAddress.getLocalHost());
+            System.out.println("Discovery jmdns instance created: " + jmdnsDis.getName());
 
             // Add a service listener
-            jmdns.addServiceListener("_http._tcp.local.", new SampleListener());
+            jmdnsDis.addServiceListener("_userLogin._tcp.local", new SampleListener());
 
             // Wait a bit
             Thread.sleep(30000);
